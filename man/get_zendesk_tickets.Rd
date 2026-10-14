@@ -10,7 +10,10 @@ get_zendesk_tickets(
   api_token,
   save = TRUE,
   filename = "all_tickets.rds",
-  merge_existing = TRUE
+  merge_existing = TRUE,
+  mode = c("incremental", "list"),
+  start_time = "2023-09-01",
+  max_pages = 2000
 )
 }
 \arguments{
@@ -25,6 +28,17 @@ get_zendesk_tickets(
 \item{filename}{Character. Der Name der Datei (inkl. .rds Endung). Standard ist "all_tickets.rds".}
 
 \item{merge_existing}{Logical. Wenn TRUE, werden neu geladene Daten mit der bestehenden lokalen Datei gemischt (Upsert), um in Zendesk gelöschte Tickets zu behalten.}
+
+\item{mode}{Character. `"incremental"` (Default) laedt ueber die Incremental
+Export API inklusive archivierter Tickets, `"list"` ueber die alte
+List-API ohne sie. Siehe Details.}
+
+\item{start_time}{POSIXct oder Character (`"YYYY-MM-DD"`). Nur bei
+`mode = "incremental"`: Startpunkt des Abzugs. Default `"2023-09-01"` --
+vor dem ersten Ticket des Kontos, also ein Vollabzug.}
+
+\item{max_pages}{Integer. Nur bei `mode = "incremental"`: Obergrenze an
+Seiten a 1.000 Tickets. Default 2000.}
 }
 \value{
 Ein Data Frame (Tibble) mit allen Zendesk-Tickets.
@@ -33,6 +47,19 @@ Ein Data Frame (Tibble) mit allen Zendesk-Tickets.
 Diese Funktion verbindet sich mit der Zendesk API und lädt mittels
 Cursor-Pagination alle verfügbaren Tickets herunter. Wenn bereits eine
 Datei existiert, werden alte (gelöschte) Tickets behalten und bestehende aktualisiert.
+}
+\details{
+`mode = "incremental"` (Default) nutzt die *Incremental Export API*
+(`/api/v2/incremental/tickets/cursor.json`). Nur sie liefert **archivierte
+Tickets** mit: Zendesk nimmt geschlossene Tickets nach rund 120 Tagen aus
+der List-API heraus. Mit `mode = "list"` (dem alten Verhalten, Endpunkt
+`/api/v2/tickets.json`) fehlte dadurch im Bestand alles, was aelter als
+rund vier Monate und geschlossen war -- am 13.10.2026 waren das 194.253
+Tickets, ausnahmslos `closed` und alle erstellt vor dem 02.11.2025.
+
+`mode = "list"` ist nur noch fuer den Vergleich da. Fuer den taeglichen
+Betrieb ist [update_zendesk_data()] die richtige Funktion -- sie leitet den
+Startpunkt aus dem lokalen Bestand ab, statt jedes Mal alles zu laden.
 }
 \examples{
 \dontrun{

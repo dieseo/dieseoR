@@ -26,9 +26,11 @@ acht
 Adgroup
 adGroupName
 adName
+Adresse
 adribute
 Adtribute
 Adtribute's
+aelter
 Aenderungen
 Aggregat
 Aggregaten
@@ -70,6 +72,7 @@ angelegt
 anhand
 Ankerjahr
 Ankerjahres
+anmeldest
 Annahmen
 Ansatz
 anschliessend
@@ -80,6 +83,8 @@ Anzeigename
 api
 Arbeit
 Arbeitsspeicher
+archivierte
+archivierter
 artige
 Artikel
 atomar
@@ -103,6 +108,7 @@ ausgeschlossen
 ausgewiesen
 Auslöschung
 Ausnahme
+ausnahmslos
 ausreichend
 ausschliesslich
 Auswahl
@@ -161,6 +167,7 @@ bereits
 berücksichtigt
 Bestand
 bestehende
+bestehenden
 Bestelldaten
 Bestelldatum
 Bestellung
@@ -171,6 +178,7 @@ bestimmt
 Bestände
 Betrag
 Betragsspalten
+Betrieb
 betroffenen
 betroffener
 Beträge
@@ -214,6 +222,7 @@ csv
 da
 dabei
 DACH
+dadurch
 dafür
 daher
 dahin
@@ -258,6 +267,8 @@ deckungsgleich
 dedupliziert
 deduplizierten
 Definitionen
+Dein
+deines
 dem
 denen
 denselben
@@ -270,6 +281,7 @@ dessen
 deutlich
 devtools
 Diagnosetabelle
+dich
 dichte
 Diese
 diese
@@ -291,6 +303,7 @@ dplyr
 drastisch
 drei
 driftet
+du
 DuckDB
 duckdb
 durch
@@ -334,6 +347,7 @@ Endlosschleifen
 Endpunkt
 Endpunkte
 Endpunkten
+Endung
 eng
 engen
 enger
@@ -414,6 +428,7 @@ Fallstricke
 falsch
 Familie
 Familien
+feew
 fehlen
 Fehlende
 fehlenden
@@ -422,6 +437,7 @@ Fehler
 fehlgeschlagene
 Fehlschluss
 Fehlt
+fehlte
 feingranularen
 Feld
 Felder
@@ -482,9 +498,11 @@ gelegt
 gelesen
 gelieferte
 gelten
+gelöschte
 gemeinsam
 gemeinsame
 gemeldet
+gemischt
 genau
 generiert
 generierte
@@ -503,6 +521,8 @@ Gesamtreihe
 Gesamtsteuer
 Gesamtumsaetze
 Gesamtumsatz
+geschlossen
+geschlossene
 gesetzt
 gesetztem
 gesetzter
@@ -555,9 +575,11 @@ Handhabt
 harmonische
 Haupttabelle
 heben
+heraus
 herausmitteln
 hergeleitete
 Hergeleitete
+herunter
 heute
 hier
 hinweg
@@ -679,6 +701,7 @@ Konflikt
 konform
 Konsequenzen
 Konstruktion
+Kontos
 Kopiert
 korrekt
 KPI
@@ -688,6 +711,7 @@ Kundenbewertungen
 künftige
 Ladevorgang
 Laedt
+laedt
 Laender
 Laesst
 laeuft
@@ -774,6 +798,7 @@ mitgerechnete
 mitgespeichert
 mitnimmt
 mitrechnen
+mittels
 mitzaehlen
 Modell
 Modelle
@@ -785,6 +810,7 @@ Modellwahl
 Modi
 moeglich
 Monat
+Monate
 Monats
 Monatsebene
 multiplikative
@@ -1059,6 +1085,7 @@ Spaltendefinition
 Spaltendefinitionen
 Spaltennamen
 Spaltensätzen
+speichere
 speichert
 Spezifisch
 spezifische
@@ -1113,6 +1140,7 @@ Szenario
 Sättigungstempo
 Tabelle
 taeglich
+taeglichen
 Tage
 Tagen
 Tagesbänder
@@ -1201,12 +1229,14 @@ Varianten
 Vektor
 veraendert
 veraltete
+verbindet
 verbindlich
 Verbraucher
 verdichten
 Verdichtet
 verdrahtet
 verfuegbaren
+verfügbaren
 Vergangenheit
 vergebenden
 Vergleich
@@ -1245,9 +1275,11 @@ Verzug
 viel
 viele
 vielen
+vier
 virtuellen
 virtuelles
 voll
+Vollabzug
 vollen
 vollerstattete
 volles
@@ -1274,6 +1306,7 @@ waehlen
 waehrend
 waere
 waeren
+waren
 Warnen
 warnt
 Warum
@@ -1328,6 +1361,7 @@ Zeitraumgrenzen
 Zeitraumlaenge
 Zeitstempel
 Zendesk
+zendesk
 zentralen
 Zentrales
 zerlegt

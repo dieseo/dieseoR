@@ -88,60 +88,15 @@ update_zendesk_data <- function(subdomain,
   ))
 
   # --- 2. Cursor-Schleife ueber die Incremental Export API -----------------
-  auth <- httr::authenticate(paste0(email, "/token"), api_token)
-  url <- sprintf(
-    "https://%s.zendesk.com/api/v2/incremental/tickets/cursor.json?start_time=%d",
-    subdomain, start_unix
+  # Der Ablauf steckt in .fetch_zendesk_incremental(); get_zendesk_tickets()
+  # nutzt denselben Unterbau, damit es nur eine Implementierung gibt.
+  delta <- .fetch_zendesk_incremental(
+    subdomain  = subdomain,
+    email      = email,
+    api_token  = api_token,
+    start_time = start_unix,
+    max_pages  = max_pages
   )
-  pages <- list()
-  i <- 0L
-
-  repeat {
-    i <- i + 1L
-    if (i > max_pages) {
-      warning(sprintf("max_pages (%d) erreicht -- Abbruch. Bestand ist evtl. unvollstaendig.", max_pages))
-      break
-    }
-
-    response <- httr::RETRY(
-      verb = "GET", url = url, config = auth,
-      times = 5, pause_base = 5, quiet = TRUE, httr::timeout(180)
-    )
-
-    if (httr::status_code(response) != 200) {
-      stop(sprintf(
-        "Zendesk-Fehler auf Seite %d: Status %d",
-        i, httr::status_code(response)
-      ))
-    }
-
-    parsed <- jsonlite::fromJSON(
-      httr::content(response, "text", encoding = "UTF-8"),
-      flatten = TRUE
-    )
-
-    if (!is.null(parsed$tickets) && NROW(parsed$tickets) > 0) {
-      # `fields` ist ein Duplikat von `custom_fields` und existiert im Bestand
-      # nicht -> weglassen, damit das Schema stabil bleibt.
-      tickets <- parsed$tickets
-      tickets <- tickets[, setdiff(names(tickets), "fields"), drop = FALSE]
-      pages[[length(pages) + 1L]] <- tickets
-      message(sprintf("  Seite %d: %d geaenderte Tickets", i, nrow(tickets)))
-    }
-
-    if (isTRUE(parsed$end_of_stream) || is.null(parsed$after_cursor)) break
-
-    url <- sprintf(
-      "https://%s.zendesk.com/api/v2/incremental/tickets/cursor.json?cursor=%s",
-      subdomain, utils::URLencode(parsed$after_cursor, reserved = TRUE)
-    )
-
-    # Zendesk drosselt die Incremental-Endpunkte deutlich strenger als die
-    # normale API -> bewusst langsam bleiben.
-    Sys.sleep(1)
-  }
-
-  delta <- if (length(pages) > 0) dplyr::bind_rows(pages) else NULL
 
   if (is.null(delta) || nrow(delta) == 0) {
     message("✅ Keine geaenderten Tickets seit dem letzten Sync.")
