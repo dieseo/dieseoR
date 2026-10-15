@@ -32,6 +32,7 @@ Adtribute
 Adtribute's
 aelter
 Aenderungen
+Agenten
 Aggregat
 Aggregaten
 Aggregationsebene
@@ -156,6 +157,7 @@ benötigt
 berechnet
 Berechnungen
 Bereinige
+bereinigen
 Bereinigt
 bereinigt
 bereinigte
@@ -170,6 +172,7 @@ bestehende
 bestehenden
 Bestelldaten
 Bestelldatum
+Bestellnummer
 Bestellung
 Bestellungen
 Bestellwert
@@ -258,6 +261,7 @@ Datenverlust
 Datenverzeichnis
 Datums
 Datumsbasis
+Datumsfelder
 Datumsspalte
 davon
 de
@@ -359,6 +363,7 @@ enthält
 entpackt
 entscheidende
 entschieden
+entsprach
 entsprechend
 Entsprechung
 entspricht
@@ -405,6 +410,7 @@ erwartet
 Erwartete
 erweitert
 erzeugt
+erzeugte
 Erzwingt
 ETS
 etwas
@@ -455,6 +461,7 @@ fixe
 flache
 folgt
 formatiere
+formatieren
 Formatierung
 Formel
 fortschreiben
@@ -474,6 +481,7 @@ Fängt
 führt
 fünfmal
 für
+garantiert
 geaendert
 geaenderte
 geaenderten
@@ -481,6 +489,7 @@ gebraucht
 gebucht
 gebunden
 gebündelt
+gedacht
 gefiltert
 geführt
 gefüllt
@@ -562,6 +571,7 @@ grossOrders
 grossRevenue
 großer
 Grund
+Gruppen
 gruppieren
 Größe
 gsd
@@ -731,6 +741,7 @@ legt
 Leitet
 leitet
 lesbar
+lesbare
 letzte
 letzten
 letztere
@@ -815,6 +826,7 @@ Monats
 Monatsebene
 multiplikative
 myshopify
+na
 Nach
 nach
 nachfolgende
@@ -864,6 +876,7 @@ noetige
 normalen
 normalisiert
 Notbremse
+nrow
 nuetzlich
 nur
 nutzen
@@ -1107,6 +1120,7 @@ Startschnitt
 statistisches
 statt
 Stattdessen
+stecken
 stehen
 stellen
 Steuer
@@ -1124,6 +1138,7 @@ STRATEGIE
 stringr
 Struktur
 strukturell
+strukturiert
 strukturierter
 Stufen
 Stunden
@@ -1159,8 +1174,10 @@ taxValue
 Teil
 temporaeres
 Terme
+Textfeldern
 tibble
 Tibble
+Ticketzahl
 tidyr
 tidyselect
 tidytext
@@ -1202,7 +1219,9 @@ Umsatzzahlen
 Umwandlung
 unabhängig
 unbedingt
+unbereinigte
 und
+unnest
 unnötiger
 unsere
 Unsichtbar
@@ -1295,6 +1314,7 @@ Vorgabe
 Vorgängen
 vorhanden
 vorhandenen
+Vorher
 Vorhersagen
 Vorjahr
 vorkam
@@ -1306,6 +1326,7 @@ waehlen
 waehrend
 waere
 waeren
+wandelt
 waren
 Warnen
 warnt
@@ -1412,6 +1433,7 @@ Zähl
 überschreibt
 überschrieben
 Übersetzt
+übersetzt
 überspringen
 übrig
 Übrige

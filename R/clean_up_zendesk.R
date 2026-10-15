@@ -5,9 +5,17 @@
 #' den Textfeldern, übersetzt Agenten- und Gruppen-IDs in lesbare Namen
 #' und strukturiert verschachtelte Listen (via, follower, collaborators) um.
 #'
+#' Seit dem 15.10.2026 gibt die Funktion garantiert **eine Zeile je Ticket**
+#' zurück. Vorher erzeugte `unnest_longer(collaborator_ids)` je Collaborator
+#' eine eigene Zeile, sodass `nrow()` nicht mehr der Ticketzahl entsprach.
+#'
 #' @param input Entweder ein Dateipfad (Character) zur .rds-Datei oder direkt der unbereinigte Data Frame.
 #'
-#' @return Ein bereinigter und strukturierter Data Frame (Tibble).
+#' @return Ein bereinigter und strukturierter Data Frame (Tibble) mit genau
+#'   einer Zeile je Ticket-ID. Die Collaborators stecken in zwei Spalten:
+#'   `collaborator_id` (der erste, sonst `NA` -- gedacht für
+#'   `is_alone = is.na(collaborator_id) & is.na(follower_ids_1)`) und
+#'   `n_collaborators` (Anzahl, 0 wenn keiner).
 #' @export
 #'
 #' @importFrom dplyr mutate select starts_with coalesce if_else
@@ -200,8 +208,29 @@ clean_up_zendesk <- function(input) {
       assignee_id = replace_ids_partial(assignee_id),
       group_id = replace_groups(group_id)
     ) |>
-    tidyr::unnest_longer(collaborator_ids, values_to = "collaborator_id") |>
+    # ⚠️ FIX 15.10.2026: Hier stand `unnest_longer(collaborator_ids)`. Das machte
+    # aus EINEM Ticket mit n Collaborators n ZEILEN -- im Bestand zuletzt 3.514
+    # Zeilen auf 374 Ticket-IDs, eine davon 48-fach. Jede Auswertung, die
+    # Tickets über Zeilen zählt, zählte diese mehrfach; im Dashboard betraf das
+    # `total_tickets`/`geschlossen` (app.R), wodurch die Quote "alleine
+    # bearbeitet" zu niedrig auswies.
+    #
+    # Gebraucht wird die Spalte nur für `is_alone = is.na(collaborator_id) &
+    # is.na(follower_ids_1)`. Dafür genügt ein Skalar je Ticket: der erste
+    # Collaborator, oder NA wenn es keinen gibt. `is.na(collaborator_id)` liefert
+    # damit exakt dasselbe wie vorher -- nur eben einmal je Ticket.
+    # `n_collaborators` hält die Information fest, die sonst mit den Zeilen
+    # verloren ginge.
+    dplyr::mutate(
+      n_collaborators = vapply(collaborator_ids, function(x) {
+        if (length(x) == 0 || all(is.na(x))) 0L else length(x)
+      }, integer(1)),
+      collaborator_id = vapply(collaborator_ids, function(x) {
+        if (length(x) == 0 || all(is.na(x))) NA_character_ else as.character(x)[1]
+      }, character(1))
+    ) |>
     dplyr::select(
+      -collaborator_ids,
       -email_cc_ids, -subject, -raw_subject,
       -custom_fields_id, -custom_fields_value, -custom_status_id,
       -followup_ids, -allow_attachments, -from_messaging_channel,

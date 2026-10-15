@@ -10,13 +10,22 @@ clean_up_zendesk(input)
 \item{input}{Entweder ein Dateipfad (Character) zur .rds-Datei oder direkt der unbereinigte Data Frame.}
 }
 \value{
-Ein bereinigter und strukturierter Data Frame (Tibble).
+Ein bereinigter und strukturierter Data Frame (Tibble) mit genau
+  einer Zeile je Ticket-ID. Die Collaborators stecken in zwei Spalten:
+  `collaborator_id` (der erste, sonst `NA` -- gedacht für
+  `is_alone = is.na(collaborator_id) & is.na(follower_ids_1)`) und
+  `n_collaborators` (Anzahl, 0 wenn keiner).
 }
 \description{
 Diese Funktion nimmt einen rohen Zendesk-Datensatz (als Dateipfad oder
 Data Frame), wandelt Datumsfelder um, extrahiert die Bestellnummer aus
 den Textfeldern, übersetzt Agenten- und Gruppen-IDs in lesbare Namen
 und strukturiert verschachtelte Listen (via, follower, collaborators) um.
+}
+\details{
+Seit dem 15.10.2026 gibt die Funktion garantiert **eine Zeile je Ticket**
+zurück. Vorher erzeugte `unnest_longer(collaborator_ids)` je Collaborator
+eine eigene Zeile, sodass `nrow()` nicht mehr der Ticketzahl entsprach.
 }
 \examples{
 \dontrun{
