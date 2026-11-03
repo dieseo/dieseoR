@@ -336,6 +336,13 @@ update_retouren_data <- function(api_key,
 #'   * ID-artige Spalten (`id`, `*_id`) werden beidseitig auf Character
 #'     normalisiert. Das ist der verlustfreie gemeinsame Nenner: IDs sind
 #'     Bezeichner, keine Rechengroessen.
+#'   * Ist eine Seite eine logical-Spalte aus lauter NA, ist das kein
+#'     Typwechsel: jsonlite macht aus einem Feld, das in ALLEN geholten
+#'     Datensaetzen null ist, genau so eine Spalte. Sie wird verlustfrei in den
+#'     Typ der Gegenseite gebracht. Ausloeser 01./02.11.2026: `deleted_at`
+#'     (Bestand character) kam in zwei kleinen Abrufen ohne geloeschten
+#'     Vorgang, weil der naechtliche DSGVO-Purge des Portals am 01.11.
+#'     ausblieb.
 #'   * Alle anderen Typkonflikte werden NICHT stillschweigend zusammengebogen,
 #'     sondern mit Spaltennamen gemeldet. Dort waere eine automatische
 #'     Umwandlung womoeglich ein echter Datenverlust (Betragsspalten!).
@@ -357,6 +364,10 @@ update_retouren_data <- function(api_key,
     out[ok] <- if (is.double(x)) sprintf("%.0f", x[ok]) else as.character(x[ok])
     out
   }
+  # NA-Vektor der Laenge n im Typ von `vorlage`; `[` erhaelt Klasse und
+  # Attribute (POSIXct samt tzone, Date, factor, list).
+  nur_na <- function(x) is.logical(x) && all(is.na(x))
+  na_wie <- function(vorlage, n) vorlage[rep(NA_integer_, n)]
 
   konflikt <- character(0)
   for (nm in intersect(names(a), names(b))) {
@@ -368,6 +379,12 @@ update_retouren_data <- function(api_key,
       a[[nm]] <- to_chr(a[[nm]])
       b[[nm]] <- to_chr(b[[nm]])
       message(sprintf("  \u2194 Typangleich '%s': %s / %s -> character", nm, ca, cb))
+    } else if (nur_na(a[[nm]])) {
+      a[[nm]] <- na_wie(b[[nm]], length(a[[nm]]))
+      message(sprintf("  \u2194 Typangleich '%s': neu nur NA -> %s", nm, cb))
+    } else if (nur_na(b[[nm]])) {
+      b[[nm]] <- na_wie(a[[nm]], length(b[[nm]]))
+      message(sprintf("  \u2194 Typangleich '%s': Bestand nur NA -> %s", nm, ca))
     } else {
       konflikt <- c(konflikt, sprintf("%s (neu: %s / Bestand: %s)", nm, ca, cb))
     }

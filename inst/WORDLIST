@@ -16,7 +16,9 @@ Abkling
 abklingendem
 abklingender
 Abruf
+Abrufen
 Abruffunktionen
+absteigend
 abweichende
 Abweichung
 abzufangen
@@ -63,6 +65,8 @@ anders
 andresdies
 anfassen
 angefasst
+Angeforderte
+angeforderten
 angefragten
 angegebenen
 angeglichenen
@@ -96,11 +100,13 @@ aufgetaucht
 aufloest
 aufsteigend
 aus
+ausblieb
 auseinander
 ausfallsicherem
 ausgefallenes
 ausgeschlossen
 ausgewiesen
+Ausloeser
 Auslöschung
 Ausnahme
 ausreichend
@@ -159,6 +165,7 @@ bereinigtes
 Bereinigungen
 bereits
 berücksichtigt
+beschnitten
 Bestand
 bestehende
 Bestelldaten
@@ -269,6 +276,7 @@ deshalb
 dessen
 deutlich
 devtools
+df
 Diagnosetabelle
 dichte
 Diese
@@ -291,6 +299,7 @@ dplyr
 drastisch
 drei
 driftet
+DSGVO
 DuckDB
 duckdb
 durch
@@ -328,6 +337,7 @@ einzige
 einzufärben
 Empfehlung
 empirisch
+endDate
 Enddatum
 Ende
 Endlosschleifen
@@ -343,6 +353,7 @@ enthaelt
 enthalten
 enthält
 entpackt
+entscheiden
 entscheidende
 entschieden
 entsprechend
@@ -353,6 +364,7 @@ Entweder
 entweder
 erfassen
 erfinden
+erfindet
 Erfolg
 erfolgreichem
 ergaenzt
@@ -461,6 +473,7 @@ für
 geaendert
 geaenderte
 geaenderten
+gebracht
 gebraucht
 gebucht
 gebunden
@@ -469,6 +482,7 @@ gefiltert
 geführt
 gefüllt
 gegen
+Gegenseite
 Gegenvariante
 gehen
 geholten
@@ -481,6 +495,7 @@ geladenen
 gelegt
 gelesen
 gelieferte
+geloeschten
 gelten
 gemeinsam
 gemeinsame
@@ -533,6 +548,7 @@ GlobalEnv
 Godbersen
 Granularität
 Grenze
+Grenzen
 Grenzfaelle
 grobe
 groesste
@@ -542,6 +558,7 @@ grossOrders
 grossRevenue
 großer
 Grund
+Grundlage
 gruppieren
 Größe
 gsd
@@ -563,6 +580,7 @@ hier
 hinweg
 Historie
 Historisch
+historischen
 hoch
 hochgeladen
 hochgerechnet
@@ -639,6 +657,7 @@ Kalendertagen
 kalibriert
 kalibrierte
 Kalibrierung
+kam
 Kampagne
 Kanaele
 Kanal
@@ -659,6 +678,7 @@ Kerzen
 Klar
 Klarnamen
 klein
+kleinen
 kleiner
 Klick
 klug
@@ -702,6 +722,7 @@ laufenden
 Laufendes
 Laufs
 laut
+lauter
 LazyData
 legt
 Leitet
@@ -732,6 +753,7 @@ Lookback
 lubridate
 lädt
 Länder
+Länderauswahl
 Ländercode
 Ländercodes
 Länderreihen
@@ -802,6 +824,7 @@ Nachtlauf
 nachtraegliche
 nachweisbar
 naechste
+naechtliche
 Namen
 Namensbereinigungen
 Namenskonventionen
@@ -919,6 +942,7 @@ pummys
 Punktprognose
 Punktsumme
 purrr
+Qualität
 quantifizieren
 Quelle
 Rabatt
@@ -1023,6 +1047,7 @@ Semantik
 separiert
 serverseitige
 serverseitigen
+Serverstand
 setzt
 shippingRevenue
 shopId
@@ -1067,6 +1092,7 @@ spezifizierten
 splittet
 sprintf
 später
+stabil
 Staende
 stammt
 standardisieren
@@ -1141,6 +1167,7 @@ timeframe
 Titel
 Titeln
 Touchpoint
+tragfähig
 Trainiert
 Trainingsfenster
 Trainingsfensters
@@ -1153,8 +1180,10 @@ trotz
 Trustpilot
 trägt
 tsibble
+Typ
 Typen
 Typkonflikte
+Typwechsel
 tägliche
 ud
 udpipe
@@ -1166,6 +1195,7 @@ umbenannt
 Umgang
 Umsatz
 Umsatzanteil
+Umsatzanteile
 Umsatzkennzahlen
 Umsatzprognose
 Umsatzreihe
@@ -1221,6 +1251,7 @@ verifiziert
 Verifiziert
 Verifizierte
 verloren
+verlustfrei
 verlustfreie
 vermeiden
 versagt
@@ -1260,6 +1291,7 @@ vor
 vorberechnen
 vordefinierte
 Vorgabe
+Vorgang
 Vorgängen
 vorhanden
 vorhandenen
@@ -1274,6 +1306,7 @@ waehlen
 waehrend
 waere
 waeren
+wandert
 Warnen
 warnt
 Warum
@@ -1357,6 +1390,7 @@ zusammen
 zusammengebogen
 zusammenpassen
 zusammensetzen
+Zusatztag
 zusätzlich
 Zwangsnull
 Zwei
@@ -1374,6 +1408,7 @@ Zähl
 ältere
 über
 übergeben
+überhaupt
 Überschreibt
 überschreibt
 überschrieben

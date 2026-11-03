@@ -28,6 +28,13 @@ unterscheiden -- ohne Konflikt bleibt alles unveraendert.
   * ID-artige Spalten (`id`, `*_id`) werden beidseitig auf Character
     normalisiert. Das ist der verlustfreie gemeinsame Nenner: IDs sind
     Bezeichner, keine Rechengroessen.
+  * Ist eine Seite eine logical-Spalte aus lauter NA, ist das kein
+    Typwechsel: jsonlite macht aus einem Feld, das in ALLEN geholten
+    Datensaetzen null ist, genau so eine Spalte. Sie wird verlustfrei in den
+    Typ der Gegenseite gebracht. Ausloeser 01./02.11.2026: `deleted_at`
+    (Bestand character) kam in zwei kleinen Abrufen ohne geloeschten
+    Vorgang, weil der naechtliche DSGVO-Purge des Portals am 01.11.
+    ausblieb.
   * Alle anderen Typkonflikte werden NICHT stillschweigend zusammengebogen,
     sondern mit Spaltennamen gemeldet. Dort waere eine automatische
     Umwandlung womoeglich ein echter Datenverlust (Betragsspalten!).
